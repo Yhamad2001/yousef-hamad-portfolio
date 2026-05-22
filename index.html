@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Data Analyst portfolio showcasing projects, skills, and experience." />
+  <title>Yousef Hamad | Data Analyst Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --accent: #3b82f6;
+      --accent-dim: #1d4ed8;
+    }
+
+    * { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #cbd5e1;
+    }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-weight: 700; font-size: 1rem;
+      color: #f1f5f9; letter-spacing: -0.02em;
+    }
+
+    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+
+    .nav-links a {
+      font-size: 0.82rem; color: #94a3b8;
+      text-decoration: none; transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: #f1f5f9; }
+
+    .nav-resume {
+      font-size: 0.8rem; padding: 0.4rem 1rem;
+      border: 1px solid rgba(59,130,246,0.5);
+      border-radius: 4px; color: var(--accent) !important;
+      transition: all 0.2s !important;
+    }
+    .nav-resume:hover {
+      background: rgba(59,130,246,0.1) !important;
+      color: #93c5fd !important;
+    }
+
+    /* Hide nav links on small screens */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ---- Hero ---- */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 5rem 1.5rem 3rem;
+      max-width: 1100px; margin: 0 auto;
+      gap: 3rem;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase; margin-bottom: 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700; color: #f1f5f9;
+      line-height: 1.1; letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem; color: #64748b;
+      line-height: 1.7; max-width: 540px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      padding: 0.65rem 1.4rem; border-radius: 6px;
+      background: var(--accent); color: white;
+      font-size: 0.88rem; font-weight: 500;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-dim); }
+
+    .btn-ghost {
+      padding: 0.65rem 1.4rem; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.12); color: #94a3b8;
+      font-size: 0.88rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: #f1f5f9; }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 2.5rem;
+      padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat-num {
+      font-size: 1.6rem; font-weight: 700; color: #f1f5f9;
+      display: block;
+    }
+    .stat-label { font-size: 0.75rem; color: #475569; letter-spacing: 0.03em; }
+
+    .hero-img-wrap {
+      width: 280px; flex-shrink: 0;
+      display: flex; justify-content: center;
+    }
+
+    .hero-avatar {
+      width: 220px; height: 220px; border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a5f, #0f172a);
+      border: 2px solid rgba(59,130,246,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: #3b82f6;
+    }
+
+    @media (max-width: 768px) {
+      #hero { flex-direction: column-reverse; padding-top: 6rem; }
+      .hero-img-wrap { width: 100%; }
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700; color: #f1f5f9;
+      letter-spacing: -0.02em; margin-bottom: 2.5rem;
+    }
+
+    .divider {
+      border: none; border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* ---- About ---- */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-text { font-size: 0.95rem; line-height: 1.8; color: #94a3b8; }
+    .about-text p { margin-bottom: 1rem; }
+
+    .about-meta { display: grid; gap: 1.2rem; }
+
+    .meta-row {
+      display: flex; justify-content: space-between;
+      padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.88rem;
+    }
+    .meta-key { color: #475569; }
+    .meta-val { color: #e2e8f0; font-weight: 500; }
+
+    /* ---- Projects ---- */
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
+
+    .project-card {
+      background: #1e293b; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-2px);
+    }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      border-color: rgba(59,130,246,0.3);
+      background: linear-gradient(135deg, #1e293b, #172032);
+    }
+
+    .project-badge {
+      display: inline-block; font-size: 0.65rem;
+      padding: 0.2rem 0.6rem; border-radius: 999px;
+      background: rgba(59,130,246,0.15); color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em; margin-bottom: 0.8rem;
+    }
+
+    .project-title {
+      font-size: 1.05rem; font-weight: 700;
+      color: #f1f5f9; margin-bottom: 0.6rem;
+    }
+
+    .project-desc {
+      font-size: 0.875rem; color: #64748b;
+      line-height: 1.7; margin-bottom: 1rem;
+    }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.72rem; padding: 0.2rem 0.55rem;
+      border-radius: 4px; background: rgba(255,255,255,0.05);
+      color: #94a3b8; font-family: 'JetBrains Mono', monospace;
+    }
+
+    .highlights-list {
+      list-style: none; margin: 1rem 0 1.2rem; padding: 0;
+    }
+    .highlights-list li {
+      font-size: 0.83rem; color: #64748b;
+      padding: 0.35rem 0; padding-left: 1.1rem;
+      position: relative; line-height: 1.6;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .highlights-list li::before {
+      content: "—"; position: absolute; left: 0; color: var(--accent);
+    }
+
+    /* ---- Skills ---- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: #1e293b; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 1.4rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 1rem;
+    }
+
+    .skill-item {
+      font-size: 0.88rem; color: #94a3b8;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .skill-item:last-child { border-bottom: none; }
+
+    /* ---- Experience ---- */
+    .exp-list { display: grid; gap: 1.5rem; }
+
+    .exp-card {
+      background: #1e293b; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 1.6rem;
+    }
+
+    .exp-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 0.3rem;
+      flex-wrap: wrap; gap: 0.5rem;
+    }
+
+    .exp-title {
+      font-size: 1rem; font-weight: 700; color: #f1f5f9;
+    }
+
+    .exp-date {
+      font-size: 0.75rem; color: #475569;
+      font-family: 'JetBrains Mono', monospace; white-space: nowrap;
+    }
+
+    .exp-company { font-size: 0.88rem; color: var(--accent); margin-bottom: 1rem; }
+
+    .exp-bullets { list-style: none; padding: 0; margin: 0; }
+    .exp-bullets li {
+      font-size: 0.87rem; color: #64748b;
+      padding: 0.3rem 0 0.3rem 1.1rem;
+      position: relative; line-height: 1.65;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .exp-bullets li:last-child { border-bottom: none; }
+    .exp-bullets li::before { content: "→"; position: absolute; left: 0; color: #3b82f6; }
+
+    /* ---- Contact ---- */
+    .contact-inner {
+      text-align: center; max-width: 560px; margin: 0 auto;
+    }
+    .contact-inner p { font-size: 0.95rem; color: #64748b; line-height: 1.8; margin-bottom: 2rem; }
+
+    .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ---- Footer ---- */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 1.8rem 1.5rem;
+      text-align: center; font-size: 0.8rem; color: #334155;
+    }
+
+    /* ---- Modal ---- */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: #1e293b; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; max-width: 640px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .modal-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 1.2rem;
+    }
+
+    .modal-title { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; }
+
+    .modal-close {
+      background: none; border: none; color: #64748b;
+      font-size: 1.4rem; cursor: pointer; line-height: 1;
+      padding: 0 0.3rem;
+    }
+    .modal-close:hover { color: #f1f5f9; }
+
+    .modal-desc { font-size: 0.9rem; color: #94a3b8; line-height: 1.75; margin-bottom: 1.2rem; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Yousef Hamad</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.linkedin.com/in/yousef-hamad/" target="_blank" class="nav-resume">Resume ↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:1100px;margin:0 auto;min-height:100vh;display:flex;align-items:center;padding:5rem 1.5rem 3rem;gap:3rem;flex-wrap:wrap;">
+  <div class="hero-text">
+    <span class="hero-tag">Data Analyst · GMU · Class of 2024</span>
+    <h1 class="hero-name">Hi, I'm Yousef.</h1>
+    <p class="hero-sub">
+      Results-driven Data Analyst with 3+ years of experience in SQL, Python, Excel, and Tableau.
+      Skilled in transforming business requirements into actionable insights — from KPI dashboards to predictive models.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="https://www.linkedin.com/in/yousef-hamad/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div>
+        <span class="stat-num">2</span>
+        <span class="stat-label">Projects Shipped</span>
+      </div>
+      <div>
+        <span class="stat-num">2</span>
+        <span class="stat-label">Degrees</span>
+      </div>
+      <div>
+        <span class="stat-num">1</span>
+        <span class="stat-label">Certification</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img-wrap">
+    <div class="hero-avatar">📊</div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-label">01 — About</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a Data Analyst with a B.S. in Computational and Data Sciences from George Mason University (Dec 2024),
+        and an A.S. in Computer Science from Northern Virginia Community College (2021). My background bridges
+        analytical rigor with practical business impact.
+      </p>
+      <p>
+        At Advantage Wrecker and Roadside Assistance, I drive operational improvements through data — building KPI
+        dashboards and performing trend analysis that contributed to an 18% reduction in average response time.
+        Previously at Abe's Transportation, I optimized logistics with Python and Tableau, cutting fuel costs by 10%
+        and improving customer satisfaction ratings by 25%.
+      </p>
+      <p>
+        I'm adaptable, detail-oriented, and thrive under pressure — always focused on delivering solutions that move
+        the needle.
+      </p>
+    </div>
+    <div class="about-meta">
+      <div class="meta-row"><span class="meta-key">University</span><span class="meta-val">George Mason University</span></div>
+      <div class="meta-row"><span class="meta-key">Degree</span><span class="meta-val">B.S. Computational & Data Sciences</span></div>
+      <div class="meta-row"><span class="meta-key">Graduated</span><span class="meta-val">December 2024</span></div>
+      <div class="meta-row"><span class="meta-key">Location</span><span class="meta-val">Bladensburg, MD</span></div>
+      <div class="meta-row"><span class="meta-key">Certification</span><span class="meta-val">AWS Certified Cloud Practitioner</span></div>
+      <div class="meta-row"><span class="meta-key">Status</span><span class="meta-val">Open to opportunities</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="section-label">02 — Projects</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <!-- Featured -->
+    <div class="project-card featured" onclick="openModal('modal-smh')">
+      <span class="project-badge">Featured Project</span>
+      <div class="project-title">Social Media Usage & Mental Health Correlation Study</div>
+      <p class="project-desc">
+        Analyzed a dataset of 10,000+ records to identify correlations between social media usage patterns and
+        mental health trends. Used Python for preprocessing and statistical analysis, Excel for exploratory
+        cleaning, and Tableau for interactive visualization.
+      </p>
+      <ul class="highlights-list">
+        <li>Processed and cleaned 10,000+ records with Python for statistical correlation analysis</li>
+        <li>Performed exploratory trend analysis in Excel to improve data quality and support deeper insights</li>
+        <li>Built interactive Tableau dashboards with dynamic line graphs and summary tables</li>
+        <li>Presented findings in both academic and non-academic settings through visual storytelling</li>
+      </ul>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">Statistical Analysis</span>
+        <span class="tag">Data Visualization</span>
+      </div>
+    </div>
+
+    <!-- Second project -->
+    <div class="project-card" onclick="openModal('modal-pha')">
+      <span class="project-badge">Academic Project</span>
+      <div class="project-title">Predictive Health Analysis</div>
+      <p class="project-desc">
+        Applied regression and clustering techniques in Python to segment health datasets and build predictive
+        analytics models. Evaluated model performance with confusion matrices and classification reports.
+      </p>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">ML / Regression</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="section-label">03 — Skills</div>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-item">SQL</div>
+      <div class="skill-item">Python</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">BI & Visualization</div>
+      <div class="skill-item">Tableau</div>
+      <div class="skill-item">Power BI</div>
+      <div class="skill-item">Excel (Advanced)</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud</div>
+      <div class="skill-item">AWS (Certified)</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Analytics Skills</div>
+      <div class="skill-item">Business & Data Analysis</div>
+      <div class="skill-item">KPI Definition</div>
+      <div class="skill-item">Predictive Modeling</div>
+      <div class="skill-item">Dashboard Development</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Process & Collaboration</div>
+      <div class="skill-item">Agile / Scrum</div>
+      <div class="skill-item">Requirements Gathering</div>
+      <div class="skill-item">Cross-Functional Collaboration</div>
+      <div class="skill-item">Secure Data Handling</div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools</div>
+      <div class="skill-item">Microsoft Word</div>
+      <div class="skill-item">Microsoft PowerPoint</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="section-label">04 — Experience</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Operations Coordinator</div>
+        <div class="exp-date">Mar 2025 – Present</div>
+      </div>
+      <div class="exp-company">Advantage Wrecker and Roadside Assistance · Bladensburg, MD</div>
+      <ul class="exp-bullets">
+        <li>Performed trend analysis and operational performance monitoring, contributing to an 18% reduction in average response time.</li>
+        <li>Translated management requirements into data-driven process improvements, reducing scheduling conflicts and idle time by 10%.</li>
+        <li>Developed and maintained Excel-based tracking reports and KPI dashboards for response time, job completion, and downtime metrics — improving fleet utilization by 12%.</li>
+        <li>Collaborated with drivers, supervisors, and leadership to align operational metrics with business objectives.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Transportation Operations Analyst</div>
+        <div class="exp-date">Aug 2021 – Jul 2024</div>
+      </div>
+      <div class="exp-company">Abe's Transportation · Washington, D.C.</div>
+      <ul class="exp-bullets">
+        <li>Optimized transportation logistics using Python and Tableau, reducing fuel costs by 10% and increasing shuttle availability during peak hours by 20%.</li>
+        <li>Designed and implemented a predictive analytics system for overnight shuttle demand forecasting, increasing capacity by 10% and reducing wait times by 15%.</li>
+        <li>Analyzed customer feedback data with SQL to deliver actionable insights, improving satisfaction ratings by 25%.</li>
+        <li>Created Tableau dashboards to monitor operational KPIs and support data-driven decision-making.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-label">05 — Contact</div>
+  <h2 class="section-title">Get In Touch</h2>
+  <div class="contact-inner">
+    <p>
+      Open to full-time data analyst roles, freelance projects, and discussions about data strategy, BI tooling,
+      or analytics engineering.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:Yousef.hamad5655@hotmail.com" class="btn-primary">Send Email</a>
+      <a href="https://www.linkedin.com/in/yousef-hamad/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Yousef Hamad &nbsp;·&nbsp; Built with HTML · TailwindCSS · ❤
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-smh" onclick="closeOnOverlay(event, 'modal-smh')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Social Media Usage & Mental Health Correlation Study</div>
+      <button class="modal-close" onclick="closeModal('modal-smh')">✕</button>
+    </div>
+    <p class="modal-desc">
+      A data science project conducted at George Mason University (Jan – May 2024) analyzing the relationship
+      between social media usage habits and mental health outcomes across 10,000+ participant records.
+    </p>
+    <ul class="highlights-list">
+      <li>Preprocessed 10,000+ records in Python — statistical analysis, data parsing, and correlation modeling</li>
+      <li>Performed data cleaning and exploratory trend analysis in Excel to validate and enrich the dataset</li>
+      <li>Built interactive Tableau dashboards featuring dynamic line graphs and summary tables</li>
+      <li>Presented findings in academic and public-facing formats through visual storytelling and written reports</li>
+    </ul>
+    <div class="tag-list">
+      <span class="tag">Python</span>
+      <span class="tag">Excel</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">Statistical Analysis</span>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-pha" onclick="closeOnOverlay(event, 'modal-pha')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Predictive Health Analysis</div>
+      <button class="modal-close" onclick="closeModal('modal-pha')">✕</button>
+    </div>
+    <p class="modal-desc">
+      A team project at George Mason University (Oct – Dec 2023) focused on building predictive models to identify
+      health trends from structured datasets, using regression, clustering, and classification techniques.
+    </p>
+    <ul class="highlights-list">
+      <li>Processed and organized health datasets with SQL and Excel to improve data quality</li>
+      <li>Applied regression and clustering in Python to segment data and evaluate model performance</li>
+      <li>Assessed classification accuracy using confusion matrices and classification reports</li>
+      <li>Collaborated with teammates to validate findings and document outcomes</li>
+      <li>Designed interactive Tableau dashboards to visualize prediction results during academic presentations</li>
+    </ul>
+    <div class="tag-list">
+      <span class="tag">Python</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Excel</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">Regression</span>
+      <span class="tag">Clustering</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+  }
+  function closeOnOverlay(e, id) {
+    if (e.target === document.getElementById(id)) closeModal(id);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+    }
+  });
+</script>
+
+</body>
+</html>
